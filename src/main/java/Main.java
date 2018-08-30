@@ -56,49 +56,6 @@ public class Main {
                     public void mouseClicked(MouseEvent e) {
                         if (e.getClickCount() == 2) {
                             JOptionPane.showMessageDialog(null, "You clicked:"+cardBacks.get(jList.getSelectedIndex()).getName());
-                            //al.actionPerformed(new ActionEvent(e.getSource(), e.getID(), "ENTER"));
-                           // URL url = new URL("http://java.org/source.gif");
-                           // Image image = ImageIO.read(url);
-                            //try {
-                          //  Collections.shuffle(cardBacks);
-                            //System.out.println(cardBacks.get(jList.getSelectedIndex()).getImg());
-                               // for (CardBack cardBack : cardBacks) {
-                                 //   try {
-                                        //String readURL = ""+""+cardBacks.get(jList.getSelectedIndex()).getImg();
-                                        //URL url = new URL(readURL);
-                                        //System.out.println("URL ADRESAS:"+url);
-                                        //Image image = ImageIO.read(new URL(""+cardBacks.get(jList.getSelectedIndex()).getImg()));
-                                      //  System.out.println(image);
-
-                                        //JOptionPane.showMessageDialog(null, "message", "title", JOptionPane.OK_OPTION, new ImageIcon(image));
-                                   // } catch (IOException e1) {
-                                       // e1.printStackTrace();
-                                   // }
-
-                                //}
-
-
-
-
-                            //URL url = new URL(""+ );
-                           // } catch (MalformedURLException e1) {
-                              //  e1.printStackTrace();
-                            //}
-
-                          //  URL url = null;
-//                            try {
-//                                url = new URL("http://wow.zamimg.com/images/hearthstone/backs/original/Card_Back_Launch.png");
-//                            } catch (MalformedURLException e1) {
-//                                e1.printStackTrace();
-//                            }
-//                            try {
-//                                Image image = ImageIO.read(url);
-//                                JOptionPane.showMessageDialog(null, "message", "title", JOptionPane.OK_OPTION, new ImageIcon(image));
-//                            } catch (IOException e1) {
-//                                e1.printStackTrace();
-//                            }
-
-                            //JOptionPane.showMessageDialog(null,"Paspaudei");
                         }
                     }
                 });
