@@ -21,7 +21,7 @@ public class Main {
                 .build();
 
         CardsAPI cardsAPI = retrofit.create(CardsAPI.class);
-        Call<List<CardBack>> call =  cardsAPI.getCardBacks(""); // todo as noriu perduti getui parametra //!!!!!
+        Call<List<CardBack>> call =  cardsAPI.getCardBacks("Ysera"); // todo as noriu perduti getui parametra //!!!!!
         call.enqueue(new Callback<List<CardBack>>() {
             @Override
             public void onResponse(Call<List<CardBack>> call, Response<List<CardBack>> response) {
