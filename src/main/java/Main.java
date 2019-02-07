@@ -1,21 +1,13 @@
-import com.sun.deploy.ui.ImageLoader;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Collections;
 import java.util.List;
 
 public class Main {
@@ -29,7 +21,7 @@ public class Main {
                 .build();
 
         CardsAPI cardsAPI = retrofit.create(CardsAPI.class);
-        Call<List<CardBack>> call =  cardsAPI.getCardBacks();
+        Call<List<CardBack>> call =  cardsAPI.getCardBacks(""); // todo as noriu perduti getui parametra //!!!!!
         call.enqueue(new Callback<List<CardBack>>() {
             @Override
             public void onResponse(Call<List<CardBack>> call, Response<List<CardBack>> response) {
