@@ -12,6 +12,10 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+
+        Currencys();
+
+
         String BASE_URL = "https://omgvamp-hearthstone-v1.p.mashape.com/";
 
         Retrofit retrofit = new Retrofit
@@ -57,5 +61,27 @@ public class Main {
             public void onFailure(Call<List<CardBack>> call, Throwable t) {
                 JOptionPane.showMessageDialog(null, "Error API read Failed. Check the plan settings or Internet connection!");   }
             });
+
+        }
+        private static void Currencys()
+        {
+            //https://currency-exchange.p.rapidapi.com/exchange?q=1.0&from=EUR&to=BGN
+            String BASE_URL = "https://currency-exchange.p.rapidapi.com/";
+
+            Retrofit retrofit = new Retrofit
+                    .Builder()
+                    .baseUrl(BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+
+            CurrencyAPI currencyAPI = retrofit.create(CurrencyAPI.class);
+            Call<List<Integer>>  call =  currencyAPI.exchange("1","EUR","BGN"); // todo as noriu perduti getui parametra //!!!!!
+            call.enqueue(new Callback<List<Integer>>() {
+                @Override
+                public void onResponse(Call<List<Integer>> call, Response<List<Integer>> response) {
+                    Integer cardBacks = response.body(); // Gražina duomenis konvertuotus į įprastus java Objektus
+                }
+            });
+
         }
     }
