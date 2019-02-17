@@ -14,8 +14,8 @@ public class Main {
     public static void main(String[] args) {
 
         Currencys();
-
-
+return;
+/*
         String BASE_URL = "https://omgvamp-hearthstone-v1.p.mashape.com/";
 
         Retrofit retrofit = new Retrofit
@@ -61,7 +61,7 @@ public class Main {
             public void onFailure(Call<List<CardBack>> call, Throwable t) {
                 JOptionPane.showMessageDialog(null, "Error API read Failed. Check the plan settings or Internet connection!");   }
             });
-
+*/
         }
         private static void Currencys()
         {
@@ -75,12 +75,19 @@ public class Main {
                     .build();
 
             CurrencyAPI currencyAPI = retrofit.create(CurrencyAPI.class);
-            Call<List<Integer>>  call =  currencyAPI.exchange("1","EUR","BGN"); // todo as noriu perduti getui parametra //!!!!!
-            call.enqueue(new Callback<List<Integer>>() {
+            //Call<ExchangeBack>  call =  currencyAPI.exchange("1","EUR","BGN"); // todo as noriu perduti getui parametra //!!!!!
+            Call<ExchangeBack>  call =  currencyAPI.exchangeS(); // todo as noriu perduti getui parametra //!!!!!
+          //  call.enqueue(new Callback<List<CardBack>>() {
+            call.enqueue(new Callback<ExchangeBack>() {
                 @Override
-                public void onResponse(Call<List<Integer>> call, Response<List<Integer>> response) {
-                    Integer cardBacks = response.body(); // Gražina duomenis konvertuotus į įprastus java Objektus
+                public void onResponse(Call<ExchangeBack> call, Response<ExchangeBack> response) {
+                    ExchangeBack cardBacks = response.body(); // Gražina duomenis konvertuotus į įprastus java Objektus
+                    JOptionPane.showMessageDialog(null,cardBacks.toString());
                 }
+                @Override
+                public void onFailure(Call<ExchangeBack> call, Throwable t) {
+                    JOptionPane.showMessageDialog(null, "Error API read Failed. Check the plan settings or Internet connection!");   }
+
             });
 
         }

@@ -1,4 +1,4 @@
 import com.google.gson.annotations.SerializedName;
 public class ExchangeBack {
-    @SerializedName("name") private String name;
+    @SerializedName("name") private Integer name;
 }
