@@ -14,24 +14,4 @@ public class ExchangeBack {
     public String toString() {
         return pavadinimas;
     }
-    /*@SerializedName("from") private String from;
-    @SerializedName("to") private String to;
-    @SerializedName("from_amount") private Integer from_amount;
-    @SerializedName("to_amount") private Integer to_amount;
-
-    public String getFrom() {
-        return from;
-    }
-    public String getTo() {
-        return to;
-    }
-    public Integer getFrom_amount() {
-        return to_amount;
-    }
-    public Integer getTo_amount() {
-        return to_amount;
-    }
-    public String toString() {
-        return ""+from+" -> "+to+" "+from_amount.toString()+" -> "+to_amount.toString();
-    }*/
 }
