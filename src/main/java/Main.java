@@ -94,6 +94,7 @@ return;
                     JFrame f = new JFrame("Valiutu sąrašas");
                     f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     JList jList = new JList(cardBacks.toArray());
+                    //JList jList = new JList();
                     jList.setFont(new Font("Helvetica Neue", Font.PLAIN, 20));
                     JScrollPane scrollPane = new JScrollPane(jList);
                     Container contentPane = f.getContentPane();
@@ -103,9 +104,18 @@ return;
                     f.setLocationRelativeTo(null);
                     f.setSize(800, 640);
                     f.setVisible(true);
+
+                    jList.addMouseListener(new MouseAdapter() {
+                        @Override
+                        public void mouseClicked(MouseEvent e) {
+                            if (e.getClickCount() == 2) {
+                                JOptionPane.showMessageDialog(null, "You clicked:"+cardBacks.get(jList.getSelectedIndex()).getKursas());
+                            }
+                        }
+                    });
                 }
                 @Override
-                public void onFailure(Call<List<ExchangeBack>>call, Throwable t) {
+                public void onFailure(Call<List<ExchangeBack>> call, Throwable t) {
                     JOptionPane.showMessageDialog(null, "Error API read Failed. Check the plan settings or Internet connection!");   }
 
             });
