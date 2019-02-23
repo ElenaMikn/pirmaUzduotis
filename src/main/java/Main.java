@@ -66,7 +66,12 @@ return;
         private static void Currencys()
         {
             //https://currency-exchange.p.rapidapi.com/exchange?q=1.0&from=EUR&to=BGN
-            String BASE_URL = "https://currency-exchange.p.rapidapi.com/";
+            //String BASE_URL = "https://currency-exchange.p.rapidapi.com/";
+            //String BASE_URL = "https://api.openfintech.io/v1/";
+            String BASE_URL = "http://elen.lt/";
+            /*final OkHttpClient okHttpClient = new OkHttpClient();
+            okHttpClient.setReadTimeout(60, TimeUnit.SECONDS);
+            okHttpClient.setConnectTimeout(60, TimeUnit.SECONDS);*/
 
             Retrofit retrofit = new Retrofit
                     .Builder()
@@ -75,17 +80,32 @@ return;
                     .build();
 
             CurrencyAPI currencyAPI = retrofit.create(CurrencyAPI.class);
-            //Call<ExchangeBack>  call =  currencyAPI.exchange("1","EUR","BGN"); // todo as noriu perduti getui parametra //!!!!!
-            Call<ExchangeBack>  call =  currencyAPI.exchangeS(); // todo as noriu perduti getui parametra //!!!!!
+            Call<List<ExchangeBack>>  call =  currencyAPI.exchange("all"); // todo as noriu perduti getui parametra //!!!!!"1","EUR","BGN"
+            //Call<ExchangeBack>  call =  currencyAPI.exchangeS(); // todo as noriu perduti getui parametra //!!!!!
           //  call.enqueue(new Callback<List<CardBack>>() {
-            call.enqueue(new Callback<ExchangeBack>() {
+            call.enqueue(new Callback<List<ExchangeBack>>() {
                 @Override
-                public void onResponse(Call<ExchangeBack> call, Response<ExchangeBack> response) {
-                    ExchangeBack cardBacks = response.body(); // Gražina duomenis konvertuotus į įprastus java Objektus
+                public void onResponse( Call<List<ExchangeBack>> call, Response<List<ExchangeBack>> response) {
+                    List<ExchangeBack> cardBacks = response.body(); // Gražina duomenis konvertuotus į įprastus java Objektus
                     JOptionPane.showMessageDialog(null,cardBacks.toString());
+
+
+
+                    JFrame f = new JFrame("Valiutu sąrašas");
+                    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    JList jList = new JList(cardBacks.toArray());
+                    jList.setFont(new Font("Helvetica Neue", Font.PLAIN, 20));
+                    JScrollPane scrollPane = new JScrollPane(jList);
+                    Container contentPane = f.getContentPane();
+                    contentPane.add(scrollPane, BorderLayout.CENTER);
+                    f.pack();
+                    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    f.setLocationRelativeTo(null);
+                    f.setSize(800, 640);
+                    f.setVisible(true);
                 }
                 @Override
-                public void onFailure(Call<ExchangeBack> call, Throwable t) {
+                public void onFailure(Call<List<ExchangeBack>>call, Throwable t) {
                     JOptionPane.showMessageDialog(null, "Error API read Failed. Check the plan settings or Internet connection!");   }
 
             });
